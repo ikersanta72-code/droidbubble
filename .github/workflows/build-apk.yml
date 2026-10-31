@@ -1,3 +1,4 @@
+
 name: Build DroidBubble APK
 
 on:
@@ -8,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,6 +22,8 @@ jobs:
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          accept-android-sdk-licenses: true
 
       - name: Install Android SDK 36
         run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
@@ -33,3 +37,4 @@ jobs:
           name: DroidBubble-debug
           path: app/build/outputs/apk/debug/*.apk
           retention-days: 7
+          
